@@ -1,0 +1,109 @@
+generated: '2026-08-29'
+method: searched
+source: https://registry.npmjs.org/ (npm registry metadata endpoints) + https://github.com/synyi
+name: Synyi packages
+description: >-
+  First-party packages published by Synyi (Shanghai Synyi Medical Technology / 森亿智能).
+  Synyi publishes no public API and therefore ships no API client SDKs. What it does publish
+  are open-source NLP / annotation tooling libraries produced by its AI team, distributed on
+  npm and mirrored in the github.com/synyi organization. These are developer tools, NOT client
+  libraries for a Synyi API — the `SDKs` pointer is deliberately NOT emitted for this provider.
+registries_searched:
+  - registry: npm
+    endpoint: https://registry.npmjs.org/
+    result: hits
+  - registry: PyPI
+    endpoint: https://pypi.org/
+    result: no first-party package found
+  - registry: Maven Central
+    endpoint: https://search.maven.org/
+    result: no first-party package found
+  - registry: NuGet
+    endpoint: https://api.nuget.org/
+    result: no first-party package found
+  - registry: pkg.go.dev
+    endpoint: https://proxy.golang.org/
+    result: no published module found (github.com/synyi/faas.go and github.com/synyi/gopy are source-only)
+  - registry: RubyGems
+    endpoint: https://rubygems.org/
+    result: no first-party package found
+  - registry: crates.io
+    endpoint: https://crates.io/
+    result: no first-party package found
+packages:
+  - name: poplar-annotation
+    registry: npm
+    url: https://www.npmjs.com/package/poplar-annotation
+    version: 2.0.3
+    published: '2020-02-27'
+    license: GPL-3.0-or-later
+    official: true
+    repository: https://github.com/synyi/poplar
+    kind: open-source-tool
+    description: >-
+      Web-based annotation tool for natural language processing, inspired by the brat rapid
+      annotation tool. Led by the AI team at Synyi; the canonical repository is the Synyi
+      GitHub organization's own repo (528 stars).
+    note: >-
+      Published to npm by maintainer "longfangsong" rather than the org account, but the
+      package's declared repository is github.com/synyi/poplar — the Synyi organization's
+      own repository — and the project is described by Synyi as led by its AI team. Treated
+      as first-party on that basis. Last release 2020-02-27; repository last pushed 2022-12-11.
+  - name: synyi-annotation-tool
+    registry: npm
+    url: https://www.npmjs.com/package/synyi-annotation-tool
+    version: 0.5.1
+    published: '2018-06-13'
+    license: Apache-2.0
+    official: true
+    repository: https://github.com/synyi/annotation-tool
+    kind: open-source-tool
+    description: An SVG library for medical history annotation (NLP).
+    note: >-
+      Published by the npm account "synyi" — the organization account itself, so first-party
+      is verified rather than inferred. Last release 2018-06-13.
+  - name: synyi-faas
+    registry: npm
+    url: https://www.npmjs.com/package/synyi-faas
+    version: 0.3.9
+    published: '2022-11-21'
+    license: ISC
+    official: true
+    repository: null
+    kind: open-source-tool
+    description: JavaScript client for Synyi's internal FaaS runtime.
+    note: >-
+      No repository declared in the package manifest, but the Synyi GitHub organization
+      publishes matching source repos github.com/synyi/faas.js (TypeScript) and
+      github.com/synyi/faas.go (Go). Published by maintainer "yjhatfdu". Treated as
+      first-party on the strength of the name prefix plus the matching org repositories;
+      this is weaker evidence than the synyi-annotation-tool case.
+  - name: synyi-zorro-icon-update
+    registry: npm
+    url: https://www.npmjs.com/package/synyi-zorro-icon-update
+    version: 1.0.1
+    published: '2021-06-19'
+    license: ISC
+    official: false
+    repository: null
+    kind: open-source-tool
+    description: Icon-replacement rule helper for updating a synyi/ng-zorro-antd fork.
+    note: >-
+      Name-prefixed and references a synyi/ng-zorro-antd fork, but published by an individual
+      maintainer ("zengyun") with no declared repository and no corresponding repo in the
+      public Synyi GitHub organization. Recorded for completeness; official is false because
+      first-party provenance could not be established.
+excluded_forks:
+  note: >-
+    npm carries several third-party republications of poplar that declare
+    github.com/synyi/Poplar as their repository — poplar-modify, alex-poplar, zl-annotator,
+    poplar-annotation-zy, annotation-svg, labeling-text, poplar-master-2, @wyai/annotation.
+    All are published by unaffiliated maintainers and are deliberately excluded from
+    packages[] so a fork is never credited to Synyi.
+currency_finding: >-
+  Every first-party package is stale. The newest first-party release is synyi-faas 0.3.9
+  (2022-11-21); the flagship poplar-annotation last shipped 2020-02-27 and its repository
+  last saw a push on 2022-12-11. No first-party package has been released in the ~3.75 years
+  to 2026-08-29. Since Synyi publishes no API, this is not an API-abandonment signal — it is
+  evidence that the company's open-source presence is dormant while its commercial products
+  (hospital-deployed AI systems) continue to ship.

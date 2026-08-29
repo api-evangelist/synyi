@@ -1,17 +1,38 @@
 aid: synyi
 name: Synyi
-description: 'Synyi is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+description: >-
+  Synyi (森亿智能 / Shanghai Synyi Medical Technology Co., Ltd.) is a Shanghai-based medical
+  artificial-intelligence company founded in April 2016 that builds AI and big-data systems for
+  hospitals. Its platform uses medical natural-language processing, large-scale medical
+  knowledge graphs and multi-agent LLM applications to normalize and mine the unstructured
+  clinical records held in Chinese hospital information systems, and sells that capability as
+  deployed hospital software spanning clinical decision support, medical-record quality
+  control, hospital operations management, an AI-driven clinic model and clinical research
+  tooling. IDC's "China Healthcare Big Data Solution Market Share, 2023" ranked Synyi first in
+  its market. Synyi publishes no public API, no developer portal and no machine-readable
+  contract; its products are enterprise systems deployed inside customer hospitals and reached
+  through a direct sales motion.
+image: https://www.synyi.com/static/images/home/colorLogo.png
 url: https://raw.githubusercontent.com/api-evangelist/synyi/refs/heads/main/apis.yml
 x-type: company
 x-source: harvest:secondary-market
-x-tier: stub
-x-tier-reason: harvest
+x-harvest-source-url: https://www.hiive.com/securities/synyi-stock
+x-tier: profiled
+x-tier-reason: enrichment
 specificationVersion: '0.20'
 created: '2026-08-29'
 modified: '2026-08-29'
 tags:
 - Company
+- Health Care
+- Artificial Intelligence
+- Machine Learning
+- Natural Language Processing
+- Medical Data
+- Clinical Decision Support
+- Hospital Information Systems
+- Big Data
+- China
 apis: []
 maintainers:
 - FN: Kin Lane
@@ -19,5 +40,53 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: DomainSecurity
+  url: security/synyi-domain-security.yml
 - type: Website
-  url: https://www.hiive.com/securities/synyi-stock
+  url: https://www.synyi.com/
+- type: Blog
+  url: https://www.synyi.com/media/news
+- type: Support
+  url: https://www.synyi.com/about/contact
+- type: GitHubOrganization
+  url: https://github.com/synyi
+- type: Packages
+  url: packages/synyi-packages.yml
+- type: LLMsTxt
+  url: llms/synyi-llms.txt
+- type: Conformance
+  url: conformance/synyi-conformance.yml
+- type: Compliance
+  url: conformance/synyi-conformance.yml
+- type: Plans
+  url: plans/synyi-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/synyi-rate-limits.yml
+x-enrichment:
+  date: '2026-08-29'
+  status: minimal
+  artifacts_added: 7
+  pass: local-v1
+x-coverage:
+  state: none
+  reason: no-developer-program
+  detail: >-
+    Synyi ships hospital-deployed enterprise AI systems in China and publishes no developer
+    program at all — www.synyi.com answers /api, /docs, /developer, /openapi.json and even
+    its own /en English site with a blanket 302 to the homepage, api.synyi.com is a wildcard
+    vhost returning 503 with no upstream, and open.synyi.com serves the stock nginx default
+    page, so there is no API to gate and no contract that was withheld.
+  evidence:
+    - url: https://www.synyi.com/openapi.json
+      status: 302
+    - url: https://www.synyi.com/developer
+      status: 302
+    - url: https://api.synyi.com/openapi.json
+      status: 503
+    - url: https://open.synyi.com/openapi.json
+      status: 404
+    - url: https://www.synyi.com/.well-known/agent-card.json
+      status: 302
+    - url: https://www.synyi.com/en
+      status: 302
+  checked: '2026-08-29'

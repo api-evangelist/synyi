@@ -1,0 +1,107 @@
+# Synyi (森亿智能 / Shanghai Synyi Medical Technology)
+
+> Synyi is a Shanghai-based medical artificial-intelligence company founded in April 2016 that
+> builds AI and big-data systems for hospitals. Its platform standardizes and mines the
+> unstructured clinical records held in Chinese hospital information systems using medical NLP,
+> knowledge graphs and multi-agent LLM applications, and sells that capability as deployed
+> hospital software across clinical decision support, medical-record quality control, hospital
+> operations management and clinical research. IDC's "China Healthcare Big Data Solution Market
+> Share, 2023" ranked Synyi first in its market.
+
+IMPORTANT FOR AGENTS AND INTEGRATORS: Synyi publishes NO public API, NO developer portal, NO
+API documentation and NO machine-readable contract. As of 2026-08-29 there is no OpenAPI,
+GraphQL, AsyncAPI, gRPC or WSDL contract on any Synyi host, no MCP server, and no A2A agent
+card. Synyi's products are enterprise systems deployed inside customer hospitals and reached
+through a sales conversation, not through a self-serve API. Do not attempt to construct
+requests against a Synyi API — none is published. See "Contract discovery" below for the exact
+probes and their HTTP statuses.
+
+## Company
+- Legal entity: 上海森亿医疗科技股份有限公司 (Shanghai Synyi Medical Technology Co., Ltd.)
+- Founded: April 2016, Zhangjiang Hi-Tech Park, Shanghai
+- Headquarters: Pudong New Area, Shanghai, China
+- Regional centers: Zhongshan, Guangdong (southern center); Changchun, Jilin (northern center)
+- ICP filing: 沪ICP备16018846号-1 · Public security filing: 沪公网安备 31011502004671号
+- Website: https://www.synyi.com/
+- Company profile: https://www.synyi.com/about/company
+- Contact: https://www.synyi.com/about/contact
+- News: https://www.synyi.com/media/news
+- Customer showcase: https://www.synyi.com/customer/showcase
+- GitHub organization: https://github.com/synyi
+
+## Products and solutions
+- AI 诊所 (AI Clinic) — https://www.synyi.com/solution?id=43
+  End-to-end AI-driven care model: voice-based intake and history taking, AI-directed physical
+  examination via connected devices (temperature, laryngoscope, heart/lung sounds), assisted
+  diagnosis, risk alerting and guideline-conformant treatment recommendation, with a
+  human-in-the-loop safety layer of clinical rules, pathways and multi-agent cross-validation.
+- 临床辅助决策与质控智能体 AI (Clinical decision support and quality-control agent AI)
+  Monitors the full treatment and medical-record pipeline against hospital data, raising
+  automated defect alerts and managing them to closure.
+- 医院运营管理智能体 AI (Hospital operations management agent AI) — https://www.synyi.com/solution?id=36
+  Conversational metric monitoring, automated root-cause analysis, 24x7 alerting with pushed
+  intervention plans, and one-click operations reporting.
+- 临床科研智能体 AI (Clinical research agent AI) — https://www.synyi.com/solution?id=34
+  Natural-language cohort search, automated research-grade data cleaning, built-in analysis
+  prompts, patient recruitment and enrollment, and automated form filling.
+- 新一代医生工作站 (Next-generation clinician workstation), 临床质量管理 (clinical quality
+  management), 指挥调度中心 (command and dispatch center), 绩效与效能管理 (performance
+  management), 精益运营决策分析 (lean operations analytics), 区域数据及资源协同 (regional data
+  and resource coordination).
+
+## Core technology
+- https://www.synyi.com/core-tech
+- Frontier AI algorithms: multi-domain AI agent center, disease-risk prediction model suite,
+  multimodal model library, AutoML engine, high-performance medical NLP.
+- Medical knowledge engineering: large-scale medical knowledge graph, medical variable center,
+  all-disease medical rule center, high-quality medical AI training corpora, 100+ standardized
+  disease-specific datasets.
+- Heterogeneous data governance: normalization of medical terminology across all domains,
+  multimodal data-quality monitoring, data-lineage framework, full-element data asset center,
+  high-concurrency real-time medical data governance engine.
+- The team reports 70+ published SCI papers.
+
+## Certifications published by Synyi
+- ISO/IEC 27001 and ISO 9001 (listed by name on https://www.synyi.com/about/company; no
+  certificate number, issuing body or expiry is published)
+- 国家级专精特新“小巨人”企业 (MIIT national "Little Giant" enterprise)
+- 高新技术企业 (National High-Tech Enterprise, awarded November 2018)
+- 上海市企业技术中心 (Shanghai Municipal Enterprise Technology Center)
+
+## Open source
+Synyi's AI team publishes open-source developer tooling — not API client SDKs, because there is
+no API to wrap. All of it is dormant; the most recent first-party release was 2022-11-21.
+- poplar / poplar-annotation — web-based NLP annotation tool (TypeScript, GPL-3.0, 528 stars)
+  https://github.com/synyi/poplar · https://www.npmjs.com/package/poplar-annotation (2.0.3, 2020-02-27)
+- synyi-annotation-tool — SVG library for medical-history annotation (Apache-2.0)
+  https://www.npmjs.com/package/synyi-annotation-tool (0.5.1, 2018-06-13)
+- synyi-faas — client for Synyi's internal FaaS runtime
+  https://www.npmjs.com/package/synyi-faas (0.3.9, 2022-11-21) · https://github.com/synyi/faas.js · https://github.com/synyi/faas.go
+- Also in the org: xpath, gopy, annotation-viewer, kityminder-editor, crf.js
+
+## Contract discovery — what was probed and what it returned (2026-08-29)
+- https://www.synyi.com/openapi.json, /swagger.json, /api-docs, /docs, /api, /developer,
+  /llms.txt, /sitemap.xml — every one returns HTTP 302 to the site root. The host serves a
+  blanket catch-all redirect; a control probe of /nonexistent-abc123 returns the identical 302.
+- https://api.synyi.com/ and /openapi.json, /swagger.json, /v1/openapi.json, /api-docs,
+  /v2/api-docs, /docs, /mcp — HTTP 503 (nginx vhost with no upstream).
+- https://open.synyi.com/ — HTTP 200 serving the stock "Welcome to nginx!" default page;
+  /openapi.json, /swagger.json and /docs return 404. Same for developer., docs., openapi.
+  (all subdomains resolve through a wildcard record to the same two AWS China addresses).
+- https://www.synyi.com/.well-known/{security.txt, openid-configuration,
+  oauth-authorization-server, oauth-protected-resource, api-catalog, ai-plugin.json,
+  agent-card.json, agent.json} — all HTTP 302 to the site root. No document is served.
+- No GraphQL endpoint, no MCP server, no A2A agent card was found on any host.
+- https://www.synyi.com/en — HTTP 302 to the site root. Search engines still index English
+  pages such as /en/product-categories/13.html, but the English site has been withdrawn and
+  every one of those URLs now redirects to the Chinese homepage.
+
+## Commercial model
+No public pricing, no plan tiers, no self-serve signup and no free tier. Every product page's
+call to action is 方案咨询 (request a solution consultation). Integration and deployment happen
+through Synyi's sales and delivery organization.
+
+## Provenance
+Generated by the API Evangelist enrichment pipeline on 2026-08-29 from Synyi's own public site,
+the npm registry, the GitHub API, and direct HTTP probes recorded above. No API surface was
+found and none was invented.

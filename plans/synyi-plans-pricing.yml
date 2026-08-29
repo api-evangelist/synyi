@@ -1,0 +1,32 @@
+generated: '2026-08-29'
+method: searched
+source: https://www.synyi.com/ (full site crawl, 2026-08-29)
+name: Synyi plans and pricing
+description: >-
+  Synyi publishes NO pricing of any kind. Every product page on www.synyi.com ends in a
+  "方案咨询" (solution consultation) call-to-action rather than a price, a plan table, a
+  calculator or a self-serve signup. There is no /pricing page, no plan tiers, and no
+  public API to meter. Synyi sells hospital-deployed enterprise AI systems in China through
+  a direct sales motion.
+plan_count: 0
+currency: null
+plans: []
+pages_probed:
+  - url: https://www.synyi.com/
+    status: 200
+    finding: No pricing link in navigation or footer.
+  - url: https://www.synyi.com/solution?id=43
+    status: 200
+    finding: AI诊所 (AI Clinic) product page — CTA is 方案咨询 (solution consultation), no price.
+  - url: https://www.synyi.com/solution?id=36
+    status: 200
+    finding: Hospital operations agent AI page — CTA is 方案咨询, no price.
+  - url: https://www.synyi.com/solution?id=34
+    status: 200
+    finding: Clinical research agent AI page — CTA is 方案咨询, no price.
+  - url: https://www.synyi.com/about/contact
+    status: 200
+    finding: Contact page is the only commercial entry point.
+note: >-
+  plan_count is a measured zero, not an unchecked field. Enterprise "contact us" pricing is
+  the finding.

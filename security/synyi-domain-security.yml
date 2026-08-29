@@ -1,0 +1,73 @@
+generated: '2026-08-29'
+method: probed
+source: live DNS/TLS/HTTP probes of www.synyi.com and synyi.com, 2026-08-29
+note: >-
+  The automated probe initially recorded https:false for www.synyi.com. That was a false
+  negative caused by request timeouts against a China-hosted origin — the host is reachable
+  but slow and intermittently unresponsive from US vantage points. Re-probed by hand: HTTPS
+  is served correctly over HTTP/2 with a valid certificate. Every value below was verified
+  directly and the header/record evidence is recorded alongside it.
+hosts:
+- host: www.synyi.com
+  https: true
+  http_status: 200
+  http_version: '2'
+  tls_verify_result: 0
+  tls_certificate:
+    subject: CN=*.synyi.com
+    not_before: '2025-12-04'
+    not_after: '2027-01-01'
+    wildcard: true
+  hsts: false
+  hsts_header: null
+  http_to_https_redirect: true
+  redirect_evidence: http://www.synyi.com/ returns 301 to https://www.synyi.com:443/
+  server_header: Apache/2.4.54 (Debian)
+  findings:
+  - >-
+    No Strict-Transport-Security header is returned, so a first-contact downgrade is possible
+    even though HTTP does redirect to HTTPS.
+  - >-
+    The Server header discloses an exact software version (Apache/2.4.54, Debian), which is
+    unnecessary version disclosure.
+  - >-
+    A wildcard certificate (*.synyi.com) is combined with wildcard DNS, so every subdomain —
+    including api., open., developer., docs., mcp. — presents a valid certificate regardless
+    of whether a service exists behind it. api.synyi.com answers 503 and open.synyi.com serves
+    the stock nginx default page, both under a trusted certificate.
+- host: api.synyi.com
+  https: true
+  http_status: 503
+  tls_certificate:
+    subject: CN=*.synyi.com
+    not_after: '2027-01-01'
+    wildcard: true
+  findings:
+  - nginx vhost resolving via wildcard DNS with no upstream; returns 503 on every path probed.
+- host: open.synyi.com
+  https: true
+  http_status: 200
+  tls_certificate:
+    subject: CN=*.synyi.com
+    not_after: '2027-01-01'
+    wildcard: true
+  findings:
+  - Serves the stock "Welcome to nginx!" default page (612 bytes); an unconfigured vhost.
+domains:
+- domain: synyi.com
+  dnssec: false
+  dnssec_evidence: no DS record returned for synyi.com
+  caa: []
+  caa_evidence: no CAA record returned for synyi.com
+  spf: true
+  spf_record: v=spf1 include:spf.protection.partner.outlook.cn -all
+  spf_note: >-
+    Hard-fail (-all) policy delegating to Microsoft 365 operated by 21Vianet (the China
+    instance), consistent with the MX record synyi-com.mail.protection.partner.outlook.cn.
+  dmarc: false
+  dmarc_evidence: no TXT record returned for _dmarc.synyi.com
+  mx:
+  - ' 1 synyi-com.mail.protection.partner.outlook.cn.'
+summary: >-
+  TLS is correctly deployed and SPF is strict, but three controls are absent: HSTS, DMARC and
+  DNSSEC. Absent CAA is also recorded. The absences are valid measured data, not probe failures.

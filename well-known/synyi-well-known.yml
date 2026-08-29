@@ -1,0 +1,47 @@
+generated: '2026-08-29'
+method: probed
+source: https://www.synyi.com/.well-known/* (direct HTTP probes, 2026-08-29)
+name: Synyi well-known documents
+description: >-
+  Probe record for RFC 8615 /.well-known/ documents on every Synyi host. NOTHING WAS SERVED.
+  Every path returns HTTP 302 to the site root — www.synyi.com answers every unrecognized path
+  with a catch-all redirect to its homepage, so a 302 here is the server's soft-404 and not
+  evidence of a document. No WellKnown or SecurityTxt pointer is emitted in apis.yml, because
+  this file records an absence, not a presence.
+hosts:
+  - host: www.synyi.com
+    note: >-
+      Corporate site (Chinese). Catch-all: every unknown path 302s to http://www.synyi.com/.
+      Verified against a control path (/nonexistent-abc123), which returns the identical 302.
+    documents:
+      - path: /.well-known/security.txt
+        status: 302
+        file: null
+      - path: /.well-known/openid-configuration
+        status: 302
+        file: null
+      - path: /.well-known/oauth-authorization-server
+        status: 302
+        file: null
+      - path: /.well-known/oauth-protected-resource
+        status: 302
+        file: null
+      - path: /.well-known/api-catalog
+        status: 302
+        file: null
+      - path: /.well-known/ai-plugin.json
+        status: 302
+        file: null
+      - path: /.well-known/agent-card.json
+        status: 302
+        file: null
+      - path: /.well-known/agent.json
+        status: 302
+        file: null
+control_probe:
+  path: /nonexistent-abc123
+  status: 302
+  redirect_url: http://www.synyi.com/
+  finding: >-
+    The control path returns the same 302 as every /.well-known/ path, confirming the site
+    serves a blanket catch-all redirect. No /.well-known/ document exists on this host.

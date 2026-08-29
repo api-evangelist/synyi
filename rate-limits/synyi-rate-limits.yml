@@ -1,0 +1,26 @@
+generated: '2026-08-29'
+method: searched
+source: https://www.synyi.com/ + contract discovery probes (2026-08-29)
+name: Synyi rate limits
+description: >-
+  No rate limits are documented because there is no public API to rate-limit. Contract
+  discovery probed every Synyi host for an OpenAPI, GraphQL, MCP or agent-card surface and
+  found none; api.synyi.com resolves via a wildcard record but returns HTTP 503 from nginx on
+  every path, and open.synyi.com serves the stock "Welcome to nginx!" default page.
+limit_count: 0
+limits: []
+response_headers: []
+status_code_on_exhaustion: null
+hosts_probed:
+  - host: api.synyi.com
+    status: 503
+    finding: nginx vhost with no upstream; identical 503 on /, /openapi.json, /docs, /mcp.
+  - host: open.synyi.com
+    status: 200
+    finding: Stock nginx default page (612 bytes); /openapi.json and /docs return 404.
+  - host: www.synyi.com
+    status: 200
+    finding: Corporate marketing site; no API reference and no developer documentation.
+note: >-
+  limit_count is a measured zero. This artifact records that rate limiting is NOT APPLICABLE
+  to this provider rather than that limits exist and went undocumented.

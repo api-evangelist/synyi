@@ -1,0 +1,74 @@
+generated: '2026-08-29'
+method: searched
+source: https://www.synyi.com/about/company (资质 / qualifications section)
+name: Synyi conformance and certifications
+description: >-
+  Standards and certifications Synyi publishes about itself. Synyi ships no machine-readable
+  API contract, so nothing here is derived from a spec — every entry below is a claim printed
+  on Synyi's own corporate site, recorded with the exact page it appears on.
+standards:
+  - id: iso-27001
+    name: ISO/IEC 27001 Information Security Management
+    conforms: true
+    evidence:
+      type: provider-published-claim
+      url: https://www.synyi.com/about/company
+      http_status: 200
+      quote: "ISO27001"
+      location: 资质 (Qualifications) list on the company profile page
+    note: >-
+      Listed by name on Synyi's own company profile page. No certificate number, issuing body,
+      scope statement or expiry date is published, and no trust center or downloadable
+      certificate was found, so the claim is recorded as published-but-unverifiable.
+  - id: iso-9001
+    name: ISO 9001 Quality Management Systems
+    conforms: true
+    evidence:
+      type: provider-published-claim
+      url: https://www.synyi.com/about/company
+      http_status: 200
+      quote: "ISO9001"
+      location: 资质 (Qualifications) list on the company profile page
+    note: Same publication basis and same limitation as the ISO 27001 entry.
+  - id: cn-high-tech-enterprise
+    name: 高新技术企业 (National High-Tech Enterprise, China)
+    conforms: true
+    evidence:
+      type: provider-published-claim
+      url: https://www.synyi.com/about/company
+      http_status: 200
+      quote: "森亿智能荣获国家高新技术企业认证"
+      location: 发展历程 (Milestones) — awarded November 2018
+    note: >-
+      A Chinese national enterprise designation, not an API or information-security standard.
+      Recorded because it is a named, dated, government-issued qualification.
+  - id: cn-specialized-little-giant
+    name: 专精特新“小巨人”企业 (National Specialized and Sophisticated "Little Giant" Enterprise, MIIT)
+    conforms: true
+    evidence:
+      type: provider-published-claim
+      url: https://www.synyi.com/about/company
+      http_status: 200
+      quote: "专精特新“小巨人”企业"
+      location: 资质 (Qualifications) list on the company profile page
+    note: Chinese Ministry of Industry and Information Technology enterprise designation.
+api_standards_assessed:
+  note: >-
+    The cross-cutting API standards this pipeline normally checks (oauth2, oidc, rfc9457,
+    pagination, idempotency, json:api, odata, scim) are all NOT APPLICABLE to Synyi: contract
+    discovery found no OpenAPI, no GraphQL, no MCP server and no published API of any kind, so
+    there is no contract in which such conformance could be asserted or refuted. They are
+    recorded as unassessed rather than as failures.
+  assessed: []
+domain_standard:
+  standard: null
+  conforms: null
+  note: >-
+    REWARD-ONLY CHECK, NOT SATISFIED AND NOT PENALISED. Synyi operates in healthcare IT, whose
+    domain standards are HL7 v2, FHIR, DICOM, IHE profiles and (in China) the WS/T national
+    health-information standards. Synyi's marketing describes medical terminology
+    normalization (全域医学术语的归一化) and heterogeneous hospital-data governance, which
+    strongly implies it consumes such standards inside customer deployments. But NO published
+    contract exists in which a domain-standard signature could be observed — no FHIR resource
+    endpoint, no HL7 message type, no DICOM conformance statement was found on any Synyi host.
+    Recording null rather than asserting a conformance we cannot evidence.
