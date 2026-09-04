@@ -12,6 +12,19 @@ description: >-
   its market. Synyi publishes no public API, no developer portal and no machine-readable
   contract; its products are enterprise systems deployed inside customer hospitals and reached
   through a direct sales motion.
+accessModel:
+  pricing: unknown
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Unknown
+  confidence: low
+  source:
+  - rate-limits
+  - security
+  generated: '2026-09-02'
+  method: derived
 image: https://www.synyi.com/static/images/home/colorLogo.png
 url: https://raw.githubusercontent.com/api-evangelist/synyi/refs/heads/main/apis.yml
 x-type: company
