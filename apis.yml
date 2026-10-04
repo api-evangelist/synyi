@@ -39,7 +39,7 @@ tags:
 - Company
 - Healthcare
 - Artificial Intelligence
-- Machine-Learning
+- Machine Learning
 - Natural Language Processing
 - Medical Data
 - Clinical Decision Support
@@ -57,6 +57,7 @@ tags_raw:
 - Hospital Information Systems
 - Big Data
 - China
+- Machine-Learning
 apis: []
 maintainers:
 - FN: Kin Lane
